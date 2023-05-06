@@ -1,20 +1,30 @@
 from fastapi import FastAPI
-
+from fastapi.responses import JSONResponse
+from router.router import router as rotas
+from starlette.routing import request_response
 app = FastAPI()
 
-Info = {
-    1 : {"Nome" : "Doan", "Idade" : 20, "Curso" : "Software"},
-    2 : {"Nome" : "TonyStark", "Idade" : 40, "Curso" : "Mecatronica"},
-    3 : {"Nome" : "Neymar", "Idade" : 31, "Curso" : "Educação Fisica"},
+""" 
+    Post = envia dados
+    Get = requisita dados 
+    Delete = Deleta dados
+    
+ """
+@app.middleware("http")
+def middleware(request, call_next):
+    print(request)
+    response = call_next(request)
+    return response 
 
-}
-#Caminho principal
-@app.get("/")
+Dados = list()
 
-def home():
-    return {"Pessoas cadastradas" :len(Info) }
-#Nomes dos Usuarios
-@app.get("/Info/{id_Nome}")
+@app.post('/DadosPost',response_class = JSONResponse)
+def envia_Dados(nome: str, sobreNome:str):
+    Dados.append((nome, sobreNome))
+    return{"Msg" : "Cadastro Feito"}
 
-def NumeroId(id_Nome : int):
-    return Info[id_Nome]
+@app.get('/DadosGet', response_class= JSONResponse)
+def recebe_Dados():
+    return Dados  
+
+app.include_router(rotas)
