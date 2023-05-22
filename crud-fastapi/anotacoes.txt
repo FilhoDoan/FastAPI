@@ -2,3 +2,10 @@ app               -> guardar os codigos fontes
 autent_crud_user  -> todo o codigo de autenticacao, funcoes e etc | logica de cadastrar e fazer login  
 router            -> onde fica as rotas  
 main              -> estrutura inicial do fast 
+
+.env -> variaveis de ambiente onde tem usuario e senha 
+
+daoB -> packed similiar ao DAO de java , no qual e as config do banco e etc(banco == SQLAlchemy)
+base        -> conexao com o banco que vai conter uma classe base , que vai conectar as models com o banco 
+connection  -> a coneccao com o banco em si  
+models      -> model de usuario 
