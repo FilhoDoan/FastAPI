@@ -1,0 +1,4 @@
+app               -> guardar os codigos fontes 
+autent_crud_user  -> todo o codigo de autenticacao, funcoes e etc | logica de cadastrar e fazer login  
+router            -> onde fica as rotas  
+main              -> estrutura inicial do fast 
